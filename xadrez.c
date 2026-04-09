@@ -1,37 +1,91 @@
 #include <stdio.h>
 
+//TORRE
+
+void moverTorre(int passos) {
+    if (passos == 0) return;
+
+    printf("Direita\n");
+    moverTorre(passos - 1);
+}
+
+//RAINHA
+void moverRainha(int passos) {
+    if (passos == 0) return;
+
+    printf("Esquerda\n");
+    moverRainha(passos - 1);
+}
+
+// BISPO
+void moverBispo(int passos) {
+    if (passos == 0) return;
+
+    // loops aninhados (vertical + horizontal)
+    for (int i = 0; i < 1; i++) {          // vertical
+        printf("Cima\n");
+
+        for (int j = 0; j < 1; j++) {      // horizontal
+            printf("Direita\n");
+        }
+    }
+
+    moverBispo(passos - 1);
+}
+
+// CAVALO 
+void moverCavalo() {
+
+    int movimentosVerticais = 2;
+    int movimentosHorizontais = 1;
+
+    for (int i = 0; i < movimentosVerticais; i++) {
+
+        if (i < 0) continue;
+
+        printf("Cima\n");
+    }
+
+    for (int j = 0; j < movimentosHorizontais; j++) {
+
+        if (j > 0) break;
+
+        printf("Direita\n");
+    }
+}
+
+
+// CÓDIGO PRINCIPAL
+
 int main(){
 
-//declaração de variaveis
-int t = 1; //torre
-int b = 1; //bispo
-int r = 1; //rainha
+    int passosTorre = 5;
+    int passosRainha = 8;
+    int passosBispo = 5;
 
-//primeira movimentação torre
+    //TORRE
+    printf("Torre\n");
+    moverTorre(passosTorre);
 
-printf("Torre\n");
-for(t; t<=5; t++)
-{printf("Direita\n");}
+    printf("\n");
 
-printf("\n");
+    // Rainha
+    printf("Rainha\n");
+    moverRainha(passosRainha);
 
-//segunda movimentação bispo
+    printf("\n");
 
-printf("Bispo\n");
-do{
-    printf("Cima, direita\n");
-    b++;
-  } while(b <= 5);
+    // Bispo
+    printf("Bispo\n");
+    moverBispo(passosBispo);
 
-  printf("\n");
+    printf("\n");
 
-  //terceira movimentação rainha
+     // Cavalo
+    printf("Cavalo\n");
+    moverCavalo();
 
-  printf("Rainha\n");
-  while(r <= 8){
-    printf("Esquerda\n");
-    r++;
-  }
 
-  return 0;
+    return 0;
+
 }
